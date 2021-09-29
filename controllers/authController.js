@@ -88,3 +88,14 @@ exports.confirmUser=async(req,res,next)=>{
         return res.status(200).send({message:"Confirmation successful"});
     })
 }
+
+exports.informationUser=async(req,res,next)=>{
+    const user = await User.find({_id:req.session.userID});
+    if(!user){
+        return res.status(404).send({ message: "User Not found." });
+    }
+    return res.status(200).render('information',{
+        information:user
+    })
+
+}

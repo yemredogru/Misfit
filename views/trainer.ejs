@@ -7,10 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-    <% for(var i=0;i<=trainings.length;i++) { %>
-        <tr>
-            <td><%= trainings[i]%></td>
-        </tr>
+    <% if(!userIN) { %>
+        <div class="topnav">
+          <a class="active" href="/">Home</a>
+          <div class="topnav-right">
+            <a href="/login">Login</a>
+            <a href="/">Register</a>
+          </div>
+        </div>
         <% } %>
+        <% if(userIN) { %> 
+    
+            <div class="topnav">
+              <a class="active" href="/">Home</a>
+              <a class="active" href="/training/my">My Courses</a>
+              <a class="active" href="/users/information">My Information</a>
+              <a class="active" href="/users/logout">Logout</a>
+            </div>
+                
+        <% } %>
+
+      <% if(information.name===undefined) { %>
+        <h1>There isnt any training data available</h1>
+      <% } else{ %>  
+        <ul>
+            <% information.forEach(function(value) { %>
+               <li> Name:<%= value.name %></li>
+               <li> Day:<%= value.trainingDay %></li>
+            <% }); %> 
+           </ul>
+     <% } %>
+        
+    
 </body>
 </html>

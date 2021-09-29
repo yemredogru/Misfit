@@ -28,7 +28,7 @@ exports.getAllTrainings=async(req,res,next)=>{
 exports.getTrainings=async(req,res,next)=>{
     try{
         const trainings = await Training.find({user:req.session.userID});
-        res.status(200).render('trainer',{trainings: trainings});
+        res.status(200).render('trainer',{information: trainings});
     }
     catch(err){
         res.status(400).json(err);

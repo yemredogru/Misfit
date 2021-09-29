@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if(!userIN) { %>
+        <div class="topnav">
+          <a class="active" href="/">Home</a>
+          <div class="topnav-right">
+            <a href="/login">Login</a>
+            <a href="/">Register</a>
+          </div>
+        </div>
+        <% } %>
+      <% if(userIN) { %> 
+    
+        <div class="topnav">
+          <a class="active" href="/">Home</a>
+          <a class="active" href="/training/my">My Courses</a>
+          <a class="active" href="/users/information">My Information</a>
+          <a class="active" href="/users/logout">Logout</a>
+        </div>
+            
+      <% } %>
+    <ul>
+        <% information.forEach(function(value) { %>
+           <li><%= value.name %></li>
+           <li><%= value.email %></li>
+           <li><%= value.image %></li>
+           <li><%= value.role %></li>
+        <% }) %>
+        </ul>
+</body>
+</html>

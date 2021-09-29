@@ -13,6 +13,7 @@ const trainingRoute=require('./routes/trainingRoute');
 
 const app=express();
 app.set('view engine', 'ejs');
+global.userIN=null;
 app.use(methodOverride('_method',{
     methods:['POST','GET']
 }));
@@ -38,6 +39,10 @@ app.use(session({
 
 
 //Routes
+app.use('*',(req,res,next)=>{
+    userIN=req.session.userID;
+    next();
+})
 app.use('/users',userRoute);
 app.use('/training',trainingRoute);
 app.use('/',pageRoute);

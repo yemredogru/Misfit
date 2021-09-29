@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/main.css">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
@@ -67,8 +68,22 @@ span.psw {
 </style>
 </head>
 <body>
+  <% if(!userIN) { %>
+    <div class="topnav">
+      <a class="active" href="/">Home</a>
+      <div class="topnav-right">
+        <a href="/login">Login</a>
+        <a href="/">Register</a>
+      </div>
+    </div>
+    <% } %>
+  <% if(userIN) { %> 
 
+    <script>window.location.href="/training/"</script>
+        
+  <% } %>
 <h2>Login Form</h2>
+
 
 <form action="/users/login" method="post">
   <div class="imgcontainer">
